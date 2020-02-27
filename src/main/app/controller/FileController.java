@@ -23,11 +23,11 @@ public class FileController {
         return service.getFiles();
     }
     @PutMapping(value = "/upload", consumes = "multipart/form-data")
-    public void uploadFile(@RequestParam("path")String path, @RequestParam("file") MultipartFile file)  {
+    public void uploadFile(@RequestParam("path")String path, @RequestParam("file") MultipartFile file) throws IOException {
         service.saveFile(file,path);
     }
     @GetMapping("/download")
-    public byte[] getFile(@RequestParam("path")String path){
+    public String getFile(@RequestParam("path")String path) throws IOException {
         return service.getFile(path);
     }
 
